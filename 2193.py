@@ -25,6 +25,9 @@ class Solution:
                         arr[k], arr[k + 1] = arr[k + 1], arr[k]
                         k += 1
                         count += 1
+                    # Optional: The else block will be entered for the next iteration 
+                    # i += 1
+                    # j -= 1
             else:
                 i += 1
                 j -= 1
