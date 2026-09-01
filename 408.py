@@ -27,6 +27,8 @@ class Solution:
                     # abbr = 5d
                     if i > len(s):
                         return False
+
+                    # For a valid abbr, if now i = len(s), then j is also len(abbr) and thus no next loop
             else:
                 # Need a char, none left
                 # s = word
