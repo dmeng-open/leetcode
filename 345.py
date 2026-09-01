@@ -6,7 +6,7 @@ class Solution:
         while i < j:
             while i < j and result[i] not in vowels:
                 i += 1
-            while i < j and not result[j] not in vowels:
+            while i < j and result[j] not in vowels:
                 j -= 1
             result[i], result[j] = result[j], result[i]
             i += 1
