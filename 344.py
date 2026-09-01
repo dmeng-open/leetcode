@@ -1,0 +1,9 @@
+from typing import List
+
+class Solution:
+    def reverse(self, s: List[str]) -> None:
+        i, j = 0, len(s) - 1
+        while i < j:
+            s[i], [j] = s[j], s[i]
+            i += 1
+            j -= 1
