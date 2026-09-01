@@ -8,7 +8,7 @@ class Solution:
     # l e t t e l
     #       i
     #         j
-    def min_moves_to_make_palindrome(self, s: str) -> int:
+    def moves(self, s: str) -> int:
         arr = list(s) # S: O(n)
         count = i = 0
         j = len(arr) - 1
