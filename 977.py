@@ -8,10 +8,10 @@ class Solution:
         i, j, k = 0, n - 1, n - 1
         while i <= j:
             if abs(ordered[i]) > abs(ordered[j]):
-                result[k] = ordered[i] * ordered[i]
+                result[k] = ordered[i] ** 2
                 i += 1
             else:
-                result[k] = ordered[j] * ordered[j]
+                result[k] = ordered[j] ** 2
                 j -= 1
             k -= 1
         return result
