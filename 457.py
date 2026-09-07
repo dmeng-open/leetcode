@@ -21,6 +21,8 @@ class Solution:
             return j
 
         for i in range(n):
+            if nums[i] == 0:
+                continue
             x = y = i
             forward = nums[i] > 0
             while True:
