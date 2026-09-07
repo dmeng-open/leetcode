@@ -4,7 +4,7 @@ from typing import List
 class Solution:
     def dup(self, nums: List[int]) -> int:
         x = y = 0
-        while x != y:
+        while True:
             x = nums[x]
             y = nums[nums[y]]
             if x == y:
@@ -13,4 +13,4 @@ class Solution:
         while x != y:
             x = nums[x]
             y = nums[y]
-        return nums[x]
+        return x
