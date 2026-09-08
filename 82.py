@@ -30,8 +30,9 @@ def dedup(head: Optional[ListNode]) -> Optional[ListNode]:
     while curr:
         if curr.next and curr.next.val == curr.val:
             dup = curr.val
-            while curr and curr.next.val == dup:
+            while curr.next and curr.next.val == dup:
                 curr = curr.next
+            curr = curr.next
             prev.next = curr
             # prev stays because curr needs to be evaluated
         else:
