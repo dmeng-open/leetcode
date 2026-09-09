@@ -3,10 +3,9 @@ from common import ListNode
 
 # T: O(n + m)
 # S: O(1)
-class Solution:
-    def get_intersection_node(a: ListNode, b: ListNode) -> Optional[ListNode]: 
-        i, j = a, b
-        while i != j:
-            i = i.next if i else b
-            j = j.next if j else a
-        return i
+def get_intersection_node(a: ListNode, b: ListNode) -> Optional[ListNode]: 
+    i, j = a, b
+    while i != j:
+        i = i.next if i else b
+        j = j.next if j else a
+    return i
