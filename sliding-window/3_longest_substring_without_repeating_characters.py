@@ -1,9 +1,9 @@
 class Solution:
     def length_of_longest_substring(self, s: str) -> int:
         n = len(s)
-        left = 0
         result = 0
         seen = set()
+        left = 0
         for right in range(n):
             while s[right] in seen:
                 seen.remove(s[left])
