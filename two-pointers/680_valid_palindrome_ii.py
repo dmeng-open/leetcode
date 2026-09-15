@@ -1,34 +1,34 @@
 # T: O(n)
 # S: O(1)
 # a b c a
-#  i
-#     j
+#  left
+#     right
 
 # a b x c a
-#   i
-#        j
+#   left
+#        right
 
 # a b c c a
-#   i
-#     j
+#   left
+#     right
 def valid_palindrome(s: str) -> bool:
-    def check(i, j) -> bool:
-        while i < j:
-            if s[i] != s[j]:
+    def check(left, right) -> bool:
+        while left < right:
+            if s[left] != s[right]:
                 return False
-            i += 1
-            j -= 1
+            left += 1
+            right -= 1
         return True
 
     n = len(s)
-    i = 0
-    j = n - 1
-    while i < j:
-        if (s[i] == s[j]):
-            i += 1
-            j -= 1
+    left = 0
+    right = n - 1
+    while left < right:
+        if (s[left] == s[right]):
+            left += 1
+            right -= 1
         else:
-            return check(i + 1, j) or check(i, j - 1)
+            return check(left + 1, right) or check(left, right - 1)
     return True
             
     

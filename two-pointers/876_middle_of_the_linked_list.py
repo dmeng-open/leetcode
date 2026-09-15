@@ -2,8 +2,8 @@ from common import ListNode
 
 
 def middle_node(head: ListNode) -> ListNode:
-    runner = walker = head
-    while runner and runner.next:
-        runner = runner.next.next
-        walker = walker.next
-    return walker
+    fast = slow = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+    return slow

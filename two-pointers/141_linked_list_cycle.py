@@ -4,10 +4,10 @@ from common import ListNode
 
 
 def has_cycle(head: Optional[ListNode]) -> bool:
-    runner = walker = head
-    while runner and runner.next:
-        runner = runner.next.next
-        walker = walker.next
-        if runner == walker:
+    fast = slow = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+        if fast == slow:
             return True
     return False

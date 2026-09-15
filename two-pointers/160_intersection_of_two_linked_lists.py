@@ -4,8 +4,8 @@ from common import ListNode
 # T: O(n + m)
 # S: O(1)
 def get_intersection_node(a: ListNode, b: ListNode) -> Optional[ListNode]: 
-    i, j = a, b
-    while i != j:
-        i = i.next if i else b
-        j = j.next if j else a
-    return i
+    a_ptr, b_ptr = a, b
+    while a_ptr != b_ptr:
+        a_ptr = a_ptr.next if a_ptr else b
+        b_ptr = b_ptr.next if b_ptr else a
+    return a_ptr

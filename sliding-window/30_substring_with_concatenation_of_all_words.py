@@ -6,16 +6,16 @@ class Solution:
     def find_substring(self, s: str, words: List[str]) -> List[int]:
         n = len(s)
         m = len(words)
-        k = len(words[0])
+        word_len = len(words[0])
         need = Counter(words)
         result = []
-        for offset in range(k):
+        for offset in range(word_len):
             seen = defaultdict(int)
             left = right = offset
             count = 0
-            while right + k <= n:
-                current = s[right:right + k]
-                right += k
+            while right + word_len <= n:
+                current = s[right:right + word_len]
+                right += word_len
                 if current not in need:
                     seen.clear()
                     count = 0
@@ -24,8 +24,8 @@ class Solution:
                 seen[current] += 1
                 count += 1
                 while seen[current] > need[current]:
-                    seen[s[left:left + k]] -= 1
-                    left += k
+                    seen[s[left:left + word_len]] -= 1
+                    left += word_len
                     count -= 1
                 if count == m:
                     result.append(left)

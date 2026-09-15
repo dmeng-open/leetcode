@@ -4,43 +4,43 @@ from typing import List
 def circular_array_loop(nums: List[int]) -> bool:
     n = len(nums)
 
-    def next(i: int) -> int:
-        return (i + nums[i]) % n
+    def next(idx: int) -> int:
+        return (idx + nums[idx]) % n
 
-    def advance(i: int, forward: bool) -> int:
-        j = next(i)
+    def advance(idx: int, forward: bool) -> int:
+        nxt = next(idx)
         # 1. Self loop
-        # 2. nums[i] = 0
-        if i == j:
+        # 2. nums[idx] = 0
+        if idx == nxt:
             return -1
-        # 1. nums[j] = 0
-        # 2. nums[j] opposite direction
-        if nums[j] == 0 or (nums[j] > 0) != forward:
+        # 1. nums[nxt] = 0
+        # 2. nums[nxt] opposite direction
+        if nums[nxt] == 0 or (nums[nxt] > 0) != forward:
             return -1
-        return j
+        return nxt
 
-    for i in range(n):
-        if nums[i] == 0:
+    for start in range(n):
+        if nums[start] == 0:
             continue
-        x = y = i
-        forward = nums[i] > 0
+        slow = fast = start
+        forward = nums[start] > 0
         while True:
-            x = advance(x, forward)
-            if x == -1:
+            slow = advance(slow, forward)
+            if slow == -1:
                 break
-            y = advance(y, forward)
-            if y == -1:
+            fast = advance(fast, forward)
+            if fast == -1:
                 break
-            y = advance(y, forward)
-            if y == -1:
+            fast = advance(fast, forward)
+            if fast == -1:
                 break
-            if x == y:
+            if slow == fast:
                 return True
         # Mark invalid path to prevent recompute
-        x = i
-        while nums[x] != 0 and (nums[x] > 0) == forward:
-            j = next(x)
-            nums[x] = 0
-            x = j
+        idx = start
+        while nums[idx] != 0 and (nums[idx] > 0) == forward:
+            nxt = next(idx)
+            nums[idx] = 0
+            idx = nxt
 
     return False

@@ -15,33 +15,33 @@ def max_number(first: List[int], second: List[int], size: int) -> List[int]:
                 drop -= 1
         return stack
 
-    def greater_suffix(first: List[int], second: List[int], i: int=0, j: int=0) -> bool:
-        while i < len(first) and j < len(second) and first[i] == second[j]:
-            i += 1
-            j += 1
-        if i == len(first):
+    def greater_suffix(first: List[int], second: List[int], first_idx: int=0, second_idx: int=0) -> bool:
+        while first_idx < len(first) and second_idx < len(second) and first[first_idx] == second[second_idx]:
+            first_idx += 1
+            second_idx += 1
+        if first_idx == len(first):
             return False
-        if j == len(second):
+        if second_idx == len(second):
             return True
-        return first[i] > second[j]
+        return first[first_idx] > second[second_idx]
 
     def merge_to_max_sequence(first: List[int], second: List[int]) -> List[int]:
         result = []
-        i = j = 0
+        first_idx = second_idx = 0
 
-        while i < len(first) or j < len(second):
-            if greater_suffix(first, second, i, j):
-                result.append(first[i])
-                i += 1
+        while first_idx < len(first) or second_idx < len(second):
+            if greater_suffix(first, second, first_idx, second_idx):
+                result.append(first[first_idx])
+                first_idx += 1
             else:
-                result.append(second[j])
-                j += 1
+                result.append(second[second_idx])
+                second_idx += 1
 
         return result
 
     result = []
-    for i in range(max(0, size - len(second)), min(size, len(first)) + 1):
-        candidate = merge_to_max_sequence(pick_max_subsequence(first, i), pick_max_subsequence(second, size - i))
+    for take in range(max(0, size - len(second)), min(size, len(first)) + 1):
+        candidate = merge_to_max_sequence(pick_max_subsequence(first, take), pick_max_subsequence(second, size - take))
         if candidate > result:
             result = candidate
     return result

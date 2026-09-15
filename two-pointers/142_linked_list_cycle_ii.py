@@ -4,14 +4,14 @@ from common import ListNode
 
 # O(n) | O(1)
 def detect_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
-    x = y = head
-    while y and y.next:
-        y = y.next.next
-        x = x.next
-        if x == y:
-            x = head
-            while x != y:
-                x = x.next
-                y = y.next
-            return x
+    slow = fast = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+        if slow == fast:
+            slow = head
+            while slow != fast:
+                slow = slow.next
+                fast = fast.next
+            return slow
     return None

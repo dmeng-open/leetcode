@@ -6,15 +6,15 @@ from common import ListNode
 # Space: O(1)
 def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
     root = ListNode(0, head)
-    i = j = root
+    slow = fast = root
 
     for _ in range(n):
-        j = j.next
+        fast = fast.next
    
-    while j.next:
-        i = i.next
-        j = j.next
+    while fast.next:
+        slow = slow.next
+        fast = fast.next
 
-    i.next = i.next.next
+    slow.next = slow.next.next
 
     return root.next

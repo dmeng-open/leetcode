@@ -1,27 +1,27 @@
 # c # d #
-# i
-#     j
+# write
+#     read
 
 # # # 
-# i
-# j
-# i-- if i > 0
+# write
+# read
+# write-- if write > 0
 # Space O(n + m)
 # Time O(n + m)
 def backspace_compare(s: str, t: str) -> bool:
     def transform(inputs: list) -> int:
-        w, r = 0, 0
-        while (r < len(inputs)):
-            # [X] inputs[j] == '#' and i > 0
-            # When inputs[j] = '#' and i = 0, the else block is entered and # is added
-            if inputs[r] == '#':
-                if w > 0:
-                    w -= 1
+        write, read = 0, 0
+        while (read < len(inputs)):
+            # [X] inputs[read] == '#' and write > 0
+            # When inputs[read] = '#' and write = 0, the else block is entered and # is added
+            if inputs[read] == '#':
+                if write > 0:
+                    write -= 1
             else:
-                inputs[w] = inputs[r]
-                w += 1
-            r += 1
-        return w
+                inputs[write] = inputs[read]
+                write += 1
+            read += 1
+        return write
 
     first, second = list(s), list(t)
     sizeFirst, sizeSecond = transform(first), transform(second)
@@ -29,8 +29,8 @@ def backspace_compare(s: str, t: str) -> bool:
     if sizeFirst != sizeSecond:
         return False
 
-    for i in range(sizeFirst):
-        if first[i] != second[i]:
+    for idx in range(sizeFirst):
+        if first[idx] != second[idx]:
             return False
 
     return True

@@ -2,9 +2,9 @@
 # S: O(n)
 def reverse_words(s: str) -> str:
     arr = s.split() # S: O(n)
-    i, j = 0, len(arr) - 1
-    while i < j: # O(n)
-        arr[i], arr[j] = arr[j], arr[i]
-        i += 1
-        j -= 1
+    left, right = 0, len(arr) - 1
+    while left < right: # O(n)
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
     return " ".join(arr)

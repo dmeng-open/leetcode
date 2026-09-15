@@ -2,15 +2,15 @@
 # Space: O(1)
 def is_palindrome(input: str) -> bool:
     n = len(input)
-    i = 0
-    j = n - 1
-    while (i < j):
-        while i < j and not input[i].isalnum():
-            i += 1
-        while i < j and not input[j].isalnum():
-            j -= 1
-        if input[i].lower() != input[j].lower():
+    left = 0
+    right = n - 1
+    while (left < right):
+        while left < right and not input[left].isalnum():
+            left += 1
+        while left < right and not input[right].isalnum():
+            right -= 1
+        if input[left].lower() != input[right].lower():
             return False
-        i += 1
-        j -= 1
+        left += 1
+        right -= 1
     return True

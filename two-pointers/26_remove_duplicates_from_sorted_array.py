@@ -1,12 +1,12 @@
 def remove_duplicates(nums):
-    i = 0
-    j = 0
+    write = 0
+    read = 0
     size = len(nums)
 
-    while j < size:
-        if nums[j] != nums[i]:
-            i += 1
-            nums[i] = nums[j]
-        j += 1
+    while read < size:
+        if nums[read] != nums[write]:
+            write += 1
+            nums[write] = nums[read]
+        read += 1
 
-    return i + 1
+    return write + 1

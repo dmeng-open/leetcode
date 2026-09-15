@@ -1,11 +1,11 @@
 # coaching
-# i
+# s_idx
 # coding
-#   j
+#   t_idx
 def append_characters(s: str, t: str) -> None:
-    i = j = 0
-    while i < len(s) and j < len(t):
-        if s[i] == t[j]:
-            j += 1
-        i += 1
-    return len(t) - j
+    s_idx = t_idx = 0
+    while s_idx < len(s) and t_idx < len(t):
+        if s[s_idx] == t[t_idx]:
+            t_idx += 1
+        s_idx += 1
+    return len(t) - t_idx

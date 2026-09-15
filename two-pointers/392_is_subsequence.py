@@ -1,7 +1,7 @@
 def is_subsequence(s: str, t: str) -> bool:
-    i = j = 0
-    while i < len(s) and j < len(t):
-        if s[i] == t[j]:
-            i += 1
-        j += 1
-    return i == len(s)
+    s_idx = t_idx = 0
+    while s_idx < len(s) and t_idx < len(t):
+        if s[s_idx] == t[t_idx]:
+            s_idx += 1
+        t_idx += 1
+    return s_idx == len(s)

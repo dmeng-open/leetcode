@@ -2,26 +2,26 @@ from typing import Optional
 from common import ListNode
 
 # o - 1 2 3 4 4 4 5 5 5
-#         k
-#                  i
-#                  j
+#         prev
+#                  curr
+#                  (scan ahead for dups)
 def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
     # if not head:
     #     return None
     # root = ListNode(0, head)
-    # k = root
-    # i = head
-    # j = i.next
-    # while j:
-    #     while j and i.val == j.val:
-    #         j = j.next
-    #     if i.next == j: # No dups
-    #         k = i
-    #         i = j
+    # prev = root
+    # curr = head
+    # ahead = curr.next
+    # while ahead:
+    #     while ahead and curr.val == ahead.val:
+    #         ahead = ahead.next
+    #     if curr.next == ahead: # No dups
+    #         prev = curr
+    #         curr = ahead
     #     else:
-    #         # k stays because j still needs to be evaluated for dups
-    #         k.next = j
-    #         i = j # j will move next in the next iteration's while loop
+    #         # prev stays because ahead still needs to be evaluated for dups
+    #         prev.next = ahead
+    #         curr = ahead # ahead will move next in the next iteration's while loop
     # return root.next
 
     root = ListNode(0, head)

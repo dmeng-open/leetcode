@@ -5,11 +5,11 @@ from typing import List
 #       k
 # 5 6 7 1 2 3 4   
 def rotate(nums: List[int], k: int) -> None:
-    def flip(i: int, j: int) -> None:
-        while i < j:
-            nums[i], nums[j] = nums[j], nums[i]
-            i += 1
-            j -= 1
+    def flip(left: int, right: int) -> None:
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1
     n = len(nums)
     k %= n
     flip(0, n - 1)

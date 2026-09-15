@@ -4,13 +4,13 @@ from typing import List
 def sorted_squares(ordered: List[int]) -> List[int]:
     n = len(ordered)
     result = [0] * n
-    i, j, k = 0, n - 1, n - 1
-    while i <= j:
-        if abs(ordered[i]) > abs(ordered[j]):
-            result[k] = ordered[i] ** 2
-            i += 1
+    left, right, write = 0, n - 1, n - 1
+    while left <= right:
+        if abs(ordered[left]) > abs(ordered[right]):
+            result[write] = ordered[left] ** 2
+            left += 1
         else:
-            result[k] = ordered[j] ** 2
-            j -= 1
-        k -= 1
+            result[write] = ordered[right] ** 2
+            right -= 1
+        write -= 1
     return result

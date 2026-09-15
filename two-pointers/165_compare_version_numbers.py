@@ -1,35 +1,35 @@
 # 1.01
-#   i
+#   v1_idx
 # 1.001
-#   j
+#   v2_idx
 
 # 1.0
-#    i
+#    v1_idx
 # 1.0.0.0
-#        j
+#        v2_idx
 # O(m + n) | O(1)
 def compare_version(v1: str, v2: str) -> int:
     m = len(v1)
     n = len(v2)
-    i = j = 0
-    while i < m or j < n:
-        # while i < m and v1[i] == '0':
-        #     i += 1
-        # while j < n and v2[j] == '0':
-        #     j += 1
+    v1_idx = v2_idx = 0
+    while v1_idx < m or v2_idx < n:
+        # while v1_idx < m and v1[v1_idx] == '0':
+        #     v1_idx += 1
+        # while v2_idx < n and v2[v2_idx] == '0':
+        #     v2_idx += 1
         # 自然就会忽略前导0
         n_v1 = 0
-        while i < m and v1[i] != '.':
-            n_v1 = n_v1 * 10 + (ord(v1[i]) - ord('0'))
-            i += 1
+        while v1_idx < m and v1[v1_idx] != '.':
+            n_v1 = n_v1 * 10 + (ord(v1[v1_idx]) - ord('0'))
+            v1_idx += 1
         n_v2= 0
-        while j < n and v2[j] != '.':
-            n_v2 = n_v2 * 10 + (ord(v2[j]) - ord('0'))
-            j += 1
+        while v2_idx < n and v2[v2_idx] != '.':
+            n_v2 = n_v2 * 10 + (ord(v2[v2_idx]) - ord('0'))
+            v2_idx += 1
         if n_v1 > n_v2:
             return 1
         if n_v1 < n_v2:
             return -1
-        i += 1
-        j += 1
+        v1_idx += 1
+        v2_idx += 1
     return 0

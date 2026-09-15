@@ -3,22 +3,22 @@ from typing import List
 # T: O(m + n)
 # S: O(1)
 def max_sum(nums1: List[int], nums2: List[int]) -> int:
-    i = j = sum1 = sum2 = 0
-    while i < len(nums1) or j < len(nums2):
-        if j >= len(nums2):
-            sum1 += nums1[i]
-            i += 1
-        elif i >= len(nums1):
-            sum2 += nums2[j]
-            j += 1
-        elif nums1[i] < nums2[j]:
-            sum1 += nums1[i]
-            i += 1
-        elif nums1[i] > nums2[j]:
-            sum2 += nums2[j]
-            j += 1
+    a_idx = b_idx = sum1 = sum2 = 0
+    while a_idx < len(nums1) or b_idx < len(nums2):
+        if b_idx >= len(nums2):
+            sum1 += nums1[a_idx]
+            a_idx += 1
+        elif a_idx >= len(nums1):
+            sum2 += nums2[b_idx]
+            b_idx += 1
+        elif nums1[a_idx] < nums2[b_idx]:
+            sum1 += nums1[a_idx]
+            a_idx += 1
+        elif nums1[a_idx] > nums2[b_idx]:
+            sum2 += nums2[b_idx]
+            b_idx += 1
         else:
-            sum1 = sum2 = max(sum1, sum2) + nums1[i]
-            i += 1
-            j += 1
+            sum1 = sum2 = max(sum1, sum2) + nums1[a_idx]
+            a_idx += 1
+            b_idx += 1
     return max(sum1, sum2) % (10**9 + 7)
